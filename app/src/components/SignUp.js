@@ -12,16 +12,42 @@ class SignUp extends React.Component {
       }
     };
   }
+  onChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+  onSubmit = e => {
+    e.preventDefault();
+  };
   render() {
     return (
       <div>
         <Header banner="Welcome to Air fitness!" />
         <form>
-          <input type="text" placeholder=" Your Name" name="name" />
+          <input
+            type="text"
+            onChange={this.onChange}
+            placeholder=" Your Name"
+            name="name"
+          />
           <br />
-          <input type="email" placeholder=" Email" name="username" />
+          <input
+            type="email"
+            onChange={this.onChange}
+            placeholder=" Email"
+            name="username"
+          />
           <br />
-          <input type="password" placeholder=" Password" name="password" />
+          <input
+            type="password"
+            onChange={this.onChange}
+            placeholder=" Password"
+            name="password"
+          />
           <br />
           <label>Choose Your Profile Type: </label>
           <br />

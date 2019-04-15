@@ -1,8 +1,25 @@
-import { LOGIN_START, LOGIN_SUCCESS } from "../actions";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE
+} from "../actions";
 
 const initialState = {
-  error: "",
-  loggingIn: false
+  credentials: {
+    username: "",
+    password: ""
+  },
+  signUp: {
+    error: "",
+    signingUp: false
+  },
+  logIn: {
+    error: "",
+    loggingIn: false
+  }
 };
 
 const reducer = (state = initialState, action) => {
