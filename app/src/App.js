@@ -5,24 +5,17 @@ import SignUp from "./components/SignUp";
 import { login, signUp } from "./actions";
 import { Route, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import ClientHomepage from "./components/ClientHomepage";
+import NavBar from "./components/NavBar";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>
-          <div>
-            <NavLink>Find a Class</NavLink>
-          </div>
-          <div>
-            <NavLink to="/app/login">Log In</NavLink>
-          </div>
-          <div>
-            <NavLink to="/app/signup">Join Now</NavLink>
-          </div>
-        </nav>
+        <NavBar />
         <Route path="/app/login" component={Login} />
         <Route path="/app/signup" component={SignUp} />
+        <Route path="/app/client-page" component={ClientHomepage} />
         {/* <Login />
         <SignUp /> */}
       </div>
