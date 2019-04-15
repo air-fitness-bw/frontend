@@ -1,0 +1,43 @@
+import React from "react";
+import Header from "./Header";
+import { Link } from "react-router-dom";
+
+class SignUp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      credentials: {
+        username: "",
+        password: ""
+      }
+    };
+  }
+  render() {
+    return (
+      <div>
+        <Header banner="Welcome to Air fitness!" />
+        <form>
+          <input type="text" placeholder=" Your Name" name="name" />
+          <br />
+          <input type="email" placeholder=" Email" name="username" />
+          <br />
+          <input type="password" placeholder=" Password" name="password" />
+          <br />
+          <label>Choose Your Profile Type: </label>
+          <br />
+          <select required>
+            <option />
+            <option value="instructor">Instructor</option>
+            <option value="client">Client</option>
+          </select>
+          <br />
+          <button type="submit">JOIN NOW</button>
+          <p>
+            Already a member? <Link>Log In</Link>
+          </p>
+        </form>
+      </div>
+    );
+  }
+}
+export default SignUp;
