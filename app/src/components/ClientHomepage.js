@@ -1,7 +1,6 @@
 import React from "react";
 import MainHeader from "./MainHeader";
 import "./client-homepage.css";
-import NavBar from "./NavBar";
 
 class ClientHomepage extends React.Component {
   constructor() {
