@@ -1,0 +1,16 @@
+.footer-container {
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  background: linear-gradient(180deg, #4a4a4a 0%, #9b9b9b 100%);
+  box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.15);
+  font-family: "Rubik", sans-serif;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  color: white;
+}
+.footer-container p {
+  margin: 3px;
+}

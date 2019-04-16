@@ -1,0 +1,11 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px 0px 20px;
+  background: linear-gradient(0deg, #694cf2 0%, #889bfb 100%);
+  color: white;
+  font-family: "Rubik", sans-serif;
+}
+.login-banner {
+  text-align: center;
+}

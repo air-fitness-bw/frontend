@@ -3,8 +3,8 @@ import MainHeader from "./MainHeader";
 import "./client-homepage.css";
 
 class ClientHomepage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
   render() {
@@ -12,7 +12,12 @@ class ClientHomepage extends React.Component {
       <div>
         <MainHeader welcome="Welcome Client!" />
         <div className="button-container">
-          <button className="blue-button">Find a Class</button>
+          <button
+            onClick={() => this.props.history.push("/app/find-class")}
+            className="blue-button"
+          >
+            Find a Class
+          </button>
           <button className="orange-button">Purchase a Punchpass</button>
           <button className="darkblue-button">My Schedule</button>
         </div>
