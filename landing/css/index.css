@@ -134,6 +134,10 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: Helvetica, sans-serif;
+  position: relative;
+  min-height: 100%;
+}
+body {
   background-image: url('../img/landing_page_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -159,14 +163,30 @@ p {
   width: 90%;
   margin: 30px auto 0px;
 }
+@media (min-width: 1360px) {
+  .header {
+    width: 1005px;
+  }
+}
 .header--wrapper {
   display: flex;
   justify-content: space-between;
+}
+@media (min-width: 800px) and (max-width:1360px) {
+  .header--wrapper {
+    margin: 0 auto;
+    width: 720px;
+  }
 }
 .header--slogan {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+}
+@media (min-width: 1360px) {
+  .header--slogan {
+    flex: 1;
+  }
 }
 .header--title {
   margin-left: 20%;
@@ -199,12 +219,22 @@ p {
 .header--links .profile--icon {
   margin-left: 8px;
 }
+@media (min-width: 1360px) {
+  .header--links .profile--icon {
+    padding-right: 15px;
+  }
+}
 .main-content-wrapper {
   width: 85%;
-  margin: 0 auto;
+  margin: 0 auto 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (min-width: 1360px) {
+  .main-content-wrapper {
+    margin: 0 auto 100px;
+  }
 }
 /*********** Nav Menu ***********/
 .nav--menu {
@@ -218,6 +248,11 @@ p {
   max-width: 320px;
   width: 100%;
   margin-right: 10px;
+}
+@media (min-width: 1360px) {
+  .nav--menu {
+    display: none;
+  }
 }
 .nav--menu-find,
 .nav--menu-login,
@@ -237,18 +272,39 @@ p {
   background-image: linear-gradient(to right, #1ce3da, #5983e8);
   color: #fff;
 }
+.main--nav {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+@media (max-width: 1360px) {
+  .main--nav {
+    display: none;
+  }
+}
+.main--nav a {
+  text-decoration: none;
+  font-size: 1.8rem;
+}
 /*********** Cards *****************/
-.card {
+@media (min-width: 1360px) {
+  .cards {
+    display: flex;
+    margin-top: 50px;
+  }
+}
+.cards .card {
   border-radius: 10px;
   padding: 0px 20px;
   height: 140px;
   padding: 0px 15px;
   max-width: 340px;
 }
-.card--img {
+.cards .card--img {
   padding: 7px;
 }
-.card--technique {
+.cards .card--technique {
   background-image: url('../img/BlueImage.png');
   background-repeat: no-repeat;
   display: flex;
@@ -256,7 +312,12 @@ p {
   align-items: center;
   margin-top: 30px;
 }
-.card--training {
+@media (min-width: 1360px) {
+  .cards .card--technique {
+    margin-top: 0;
+  }
+}
+.cards .card--training {
   background-image: url('../img/TurqImage.png');
   background-repeat: no-repeat;
   display: flex;
@@ -264,7 +325,12 @@ p {
   align-items: center;
   margin-top: 20px;
 }
-.card--strength {
+@media (min-width: 1360px) {
+  .cards .card--training {
+    margin-top: 0;
+  }
+}
+.cards .card--strength {
   background-image: url('../img/OrangeImage.png');
   background-repeat: no-repeat;
   display: flex;
@@ -272,19 +338,107 @@ p {
   align-items: center;
   margin-top: 20px;
 }
-.card--title {
+@media (min-width: 1360px) {
+  .cards .card--strength {
+    margin-top: 0;
+  }
+}
+.cards .card--title {
   color: #fff;
   font-weight: 300;
   padding: 0px 10px;
 }
-.card--title h2 {
+.cards .card--title h2 {
   padding-bottom: 10px;
+}
+.exercise--cards {
+  display: none;
+}
+@media (min-width: 1360px) {
+  .exercise--cards {
+    width: 1006px;
+    margin: 0 auto 200px;
+    display: block;
+  }
+  .exercise--card {
+    background: #fff;
+    display: flex;
+  }
+  .exercise--card-content {
+    padding: 25px;
+    align-self: center;
+  }
+  .exercise--card-content h1 {
+    padding-bottom: 20px;
+  }
+  .exercise--card-content p {
+    line-height: 1.8rem;
+  }
+  .exercise--card p {
+    font-size: 1.6rem;
+  }
+  .exercise--image {
+    overflow: hidden;
+  }
+  blockquote {
+    position: absolute;
+    right: -90px;
+    top: 400px;
+    height: 80px;
+    line-height: 25px;
+    background: #f9f9f9;
+    opacity: 0.8;
+    border-left: 10px solid #5589e8;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  blockquote:before {
+    color: #5589e8;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote:after {
+    content: close-quote;
+    visibility: hidden;
+    /* to hide closing quote – don’t use display:none here,
+                              because that would mean close-quote is absent again */
+  }
+  .blockquote-2 {
+    position: absolute;
+    left: -90px;
+    top: 400px;
+    height: 80px;
+    line-height: 25px;
+    background: #f9f9f9;
+    opacity: 0.8;
+    border-left: 10px solid #f77f26;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .blockquote-2:before {
+    color: #f77f26;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
 }
 footer {
   background-image: linear-gradient(to top, #9a9a9a, #4e4e4e);
   border-radius: 30px 30px 0px 0px;
-  margin-top: 40px;
   height: 125px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 footer #footer--wrapper {
   width: 320px;

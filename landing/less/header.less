@@ -3,16 +3,29 @@
 .header {
     width: 90%;
      margin: 30px auto 0px;
+
+     @media @desktop {
+        width: 1005px;
+    }
 }
 .header--wrapper {
     display: flex;
     justify-content: space-between;
+
+    @media @nav-mobile-to-desktop {
+        margin: 0 auto;
+        width: 720px;
+    }
     
 }
 .header--slogan {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+
+    @media @desktop {
+        flex: 1;
+    }
 }
 
 .header--title {
@@ -54,5 +67,9 @@
 
     .profile--icon {
        margin-left: 8px;
+
+       @media @desktop {
+        padding-right: 15px;;
+    }
     }
 }
