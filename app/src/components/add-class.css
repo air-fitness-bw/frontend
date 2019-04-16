@@ -1,0 +1,39 @@
+.add-class-container {
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+}
+.add-class {
+  display: flex;
+  justify-content: center;
+}
+form input {
+  padding-left: 5px;
+  width: 300px;
+  height: 36px;
+  margin: 10px 0px;
+  border: 1px solid #d8d8d8;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+#price-container {
+  font-family: "Rubik", sans-serif;
+}
+.price {
+  width: 290px;
+}
+
+form textarea {
+  margin: 10px 0px;
+  width: 300px;
+  height: 72px;
+  border: 1px solid #d8d8d8;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+form button {
+  height: 36px;
+  width: 205px;
+  border-radius: 4px;
+  background-color: #d8d8d8;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
