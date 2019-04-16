@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import "./login.css";
+import Footer from "./Footer";
 
 class SignUp extends React.Component {
   constructor() {
@@ -67,6 +68,7 @@ class SignUp extends React.Component {
             </div>
           </form>
         </div>
+        <Footer />
       </div>
     );
   }

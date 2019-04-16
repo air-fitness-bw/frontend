@@ -3,6 +3,7 @@ import barbell from "../images/barbel.png";
 import { Link } from "react-router-dom";
 import "./login.css";
 import Header from "./Header";
+import Footer from "./Footer";
 
 class Login extends React.Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class Login extends React.Component {
             </div>
           </form>
         </div>
+        <Footer />
       </div>
     );
   }
