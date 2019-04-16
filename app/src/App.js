@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import ClientHomepage from "./components/ClientHomepage";
 import InstructorHomepage from "./components/InstructorHomepage";
 import AddClass from "./components/AddClass";
+import FindClass from "./components/FindClass";
+import { newClass } from "./components/data";
 
 class App extends Component {
   render() {
@@ -21,6 +23,10 @@ class App extends Component {
         <Route path="/app/client-page" component={ClientHomepage} />
         <Route path="/app/instructor-page" component={InstructorHomepage} />
         <Route path="/app/create-class" component={AddClass} />
+        <Route
+          path="/app/find-class"
+          render={props => <FindClass {...props} classes={newClass} />}
+        />
         {/* <Login />
         <SignUp /> */}
         {/* <NavBar /> */}

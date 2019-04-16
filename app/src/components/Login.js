@@ -54,7 +54,7 @@ class Login extends React.Component {
             />
             <br />
             <div className="button-wrapper">
-              <button type="submit">Login</button>
+              <button type="submit">LOGIN</button>
               <p>
                 Not a Member? <Link to="/app/signup">Join Now</Link>
               </p>

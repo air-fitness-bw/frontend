@@ -1,0 +1,52 @@
+.class-card {
+  width: 400px;
+  margin: 20px auto;
+  font-family: "Rubik", sans-serif;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #694cf2 0%, #889bfb 100%),
+    linear-gradient(180deg, #a74cf2 0%, #7565fb 100%);
+  padding: 10px;
+  color: white;
+}
+.class-card h2 {
+  text-align: center;
+  margin: 5px;
+}
+.class-card h3 {
+  text-align: center;
+  margin: 5px;
+}
+.class-card h4 {
+  text-align: center;
+  margin: 5px;
+}
+.class-card p {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+.class-card .class-details {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+.class-card .class-details .title {
+  color: black;
+  font-weight: bold;
+}
+.add-class-button {
+  margin: 20px auto 10px auto;
+  width: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.add-class-button button {
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
+}
