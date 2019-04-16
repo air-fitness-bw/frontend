@@ -6,22 +6,32 @@ const NavBar = () => {
   return (
     <div>
       <nav>
-        <div>
+        {/* <div>
           <NavLink>Find a Class</NavLink>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <NavLink activeClassName="selected" to="/app/login">
             Log In
           </NavLink>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <NavLink activeClassName="selected" to="/app/signup">
             Join Now
+          </NavLink>
+        </div> */}
+        <div>
+          <NavLink activeClassName="selected" to="/app/instructor-page">
+            Instructors
           </NavLink>
         </div>
         <div>
           <NavLink activeClassName="selected" to="/app/client-page">
-            Client Page
+            Clients
+          </NavLink>
+        </div>
+        <div>
+          <NavLink activeClassName="selected" exact to="/">
+            Log Out
           </NavLink>
         </div>
       </nav>

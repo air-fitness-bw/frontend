@@ -1,0 +1,52 @@
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
+.button-container2 {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 50px 0px;
+  padding-bottom: 50px;
+}
+
+.blue-button {
+  height: 120px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  background: linear-gradient(180deg, #6078ea 0%, #17ead9 100%),
+    linear-gradient(180deg, #29f999 0%, #007ef6 100%);
+  box-shadow: inset 2px 2px 4px 0 rgba(0, 0, 0, 0.5),
+    0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.orange-button {
+  height: 120px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  background: linear-gradient(180deg, #f76b1c 0%, #fad961 100%);
+  box-shadow: inset 2px 2px 4px 0 rgba(0, 0, 0, 0.5),
+    0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.darkblue-button {
+  height: 120px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+  background: linear-gradient(0deg, #889bfb 0%, #694cf2 100%),
+    linear-gradient(180deg, #a74cf2 0%, #7565fb 100%);
+  box-shadow: inset 2px 2px 4px 0 rgba(0, 0, 0, 0.5),
+    0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}

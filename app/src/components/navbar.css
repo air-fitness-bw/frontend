@@ -1,10 +1,10 @@
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 5px 5px;
   align-items: center;
   height: 44px;
-  width: 350px;
+  width: 275px;
   border-radius: 20px;
   background-color: #ffffff;
   box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.13);
@@ -33,4 +33,7 @@ nav a {
   font-weight: bold;
   background: linear-gradient(135.42deg, #17ead9 0%, #6078ea 100%),
     linear-gradient(180deg, #29f999 0%, #007ef6 100%);
+}
+nav {
+  margin: 0 auto;
 }
