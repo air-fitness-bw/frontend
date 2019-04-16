@@ -1,7 +1,35 @@
 .oval-bg {
-  height: 620px;
-  width: 620px;
+  height: 300px;
+  width: 500px;
   background-color: #d8d8d8;
   background: linear-gradient(0deg, #694cf2 0%, #889bfb 100%);
-  border-radius: 0 0 0 620px;
+  border-radius: 0 0 0 300px;
+  margin-bottom: 200px;
+}
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.air-logo {
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  margin: 0px 0px;
+}
+.fitness-logo {
+  font-family: "Rubik", sans-serif;
+  font-size: 26px;
+  margin-top: 0px;
+}
+
+.pushup img {
+  position: relative;
+  left: 100px;
+  width: 200px;
+}
+.greeting {
+  text-align: center;
+  font-size: 32px;
 }

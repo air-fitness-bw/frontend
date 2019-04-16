@@ -12,12 +12,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
         <Route path="/app/login" component={Login} />
         <Route path="/app/signup" component={SignUp} />
         <Route path="/app/client-page" component={ClientHomepage} />
         {/* <Login />
         <SignUp /> */}
+        {/* <NavBar /> */}
       </div>
     );
   }
