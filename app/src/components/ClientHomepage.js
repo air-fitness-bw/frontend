@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "./MainHeader";
 import "./client-homepage.css";
+import Footer from "./Footer";
 
 class ClientHomepage extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ClientHomepage extends React.Component {
           <button className="orange-button">Add Clients to Class</button>
           <button className="darkblue-button">Attendance</button>
         </div>
+        <Footer />
       </div>
     );
   }
