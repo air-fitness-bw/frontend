@@ -1,0 +1,30 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px 0px;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+  width: 350px;
+  background: linear-gradient(90deg, #694cf2 0%, #889bfb 100%),
+    linear-gradient(180deg, #a74cf2 0%, #7565fb 100%);
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.login-form button {
+  margin: 0 auto;
+}
+.button-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+}
+.button-wrapper a {
+  color: white;
+}

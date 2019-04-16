@@ -1,20 +1,25 @@
 import React from "react";
 import profileIcon from "../images/profileIcon.png";
+import "./header.css";
+
 const Header = props => {
   return (
     <div>
-      <div>
-        <p className="logo-air">AIR</p>
-        <p className="logo-fitness">fitness</p>
-        <p>
-          Let's <span>workout</span> on your schedule!
-        </p>
+      <div className="header-container">
+        <div>
+          <p className="air-logo">AIR</p>
+          <p className="fitness-logo">fitness</p>
+          <p>
+            Let's <span>workout</span> on your schedule!
+          </p>
+        </div>
+
+        <div>
+          <img className="login-icon" src={profileIcon} alt="profile-icon" />
+        </div>
       </div>
       <div>
-        <img src={profileIcon} alt="profile-icon" />
-      </div>
-      <div>
-        <h2>{props.banner}</h2>
+        <h2 className="login-banner">{props.banner}</h2>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import barbell from "../images/barbel.png";
 import { Link } from "react-router-dom";
+import "./login.css";
 import Header from "./Header";
 
 class Login extends React.Component {
@@ -30,31 +31,35 @@ class Login extends React.Component {
     return (
       <div>
         <Header banner="Welcome Back!" />
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <img src={barbell} alt="barbell" />
-          </div>
-          <input
-            onChange={this.onChange}
-            type="text"
-            placeholder=" Email"
-            name="username"
-            value={this.state.credentials.username}
-          />
-          <br />
-          <input
-            onChange={this.onChange}
-            type="password"
-            placeholder=" Password"
-            name="password"
-            value={this.state.credentials.password}
-          />
-          <br />
-          <button type="submit">Login</button>
-          <p>
-            Not a Member? <Link>Join Now</Link>
-          </p>
-        </form>
+        <div className="login-form">
+          <form onSubmit={this.onSubmit}>
+            <div className="img-container">
+              <img src={barbell} alt="barbell" />
+            </div>
+            <input
+              onChange={this.onChange}
+              type="text"
+              placeholder=" Email"
+              name="username"
+              value={this.state.credentials.username}
+            />
+            <br />
+            <input
+              onChange={this.onChange}
+              type="password"
+              placeholder=" Password"
+              name="password"
+              value={this.state.credentials.password}
+            />
+            <br />
+            <div className="button-wrapper">
+              <button type="submit">Login</button>
+              <p>
+                Not a Member? <Link to="/app/signup">Join Now</Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
