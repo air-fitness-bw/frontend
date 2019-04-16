@@ -134,7 +134,9 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: Helvetica, sans-serif;
-  background: lightgray;
+  background-image: url('../img/landing_page_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 *,
 *:before,
@@ -200,6 +202,9 @@ p {
 .main-content-wrapper {
   width: 85%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /*********** Nav Menu ***********/
 .nav--menu {
@@ -209,6 +214,10 @@ p {
   font-size: 1.7rem;
   border-radius: 20px;
   background: #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  width: 100%;
+  margin-right: 10px;
 }
 .nav--menu-find,
 .nav--menu-login,
@@ -231,35 +240,79 @@ p {
 /*********** Cards *****************/
 .card {
   border-radius: 10px;
+  padding: 0px 20px;
   height: 140px;
   padding: 0px 15px;
+  max-width: 340px;
+}
+.card--img {
+  padding: 7px;
 }
 .card--technique {
   background-image: url('../img/BlueImage.png');
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 30px;
 }
 .card--training {
   background-image: url('../img/TurqImage.png');
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
 }
 .card--strength {
   background-image: url('../img/OrangeImage.png');
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
 }
 .card--title {
   color: #fff;
   font-weight: 300;
-  padding-left: 10px;
+  padding: 0px 10px;
 }
 .card--title h2 {
   padding-bottom: 10px;
+}
+footer {
+  background-image: linear-gradient(to top, #9a9a9a, #4e4e4e);
+  border-radius: 30px 30px 0px 0px;
+  margin-top: 40px;
+  height: 125px;
+}
+footer #footer--wrapper {
+  width: 320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+footer h1 {
+  color: #fff;
+  font-size: 5rem;
+  font-weight: 700;
+}
+footer h2 {
+  font-size: 3rem;
+  margin-top: -10px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #fff;
+}
+footer .footer--address {
+  color: #fff;
+  line-height: 18px;
+}
+footer .footer--address p {
+  font-size: 1.4rem;
+}
+footer .footer--address p:nth-child(4) {
+  padding-top: 10px;
 }
