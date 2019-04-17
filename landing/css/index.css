@@ -196,12 +196,17 @@ p {
 .header--slogan .header--title h1 {
   font-weight: 700;
   margin-top: 30px;
+  color: black;
 }
 .header--slogan .header--title h2 {
   font-weight: 300;
   margin-top: -7px;
   margin-bottom: 15px;
   font-size: 3rem;
+  color: black;
+}
+.header--slogan .header--title a {
+  text-decoration: none;
 }
 .header--slogan .header--title-sub span {
   color: #7252f3;
@@ -430,6 +435,71 @@ p {
     margin-right: 0.25em;
     vertical-align: -0.4em;
   }
+}
+/************* ABOUT US ******************/
+.profile--cards-wrapper {
+  width: 90%;
+  margin: 50px auto 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 800px) {
+  .profile--cards-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 1360px) {
+  .profile--cards-wrapper {
+    margin: 0px auto;
+    width: 60%;
+    padding-top: 180px;
+  }
+}
+.profile--card {
+  background: lightblue;
+  max-width: 340px;
+  border-radius: 5px;
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.4);
+  margin-bottom: 15px;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+@media (min-width: 800px) {
+  .profile--card {
+    margin: 10px 10px;
+  }
+}
+@media (min-width: 1360px) {
+  .profile--card:hover {
+    box-shadow: 8px 4px 18px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+  }
+  .profile--cardcard:nth-child(5) {
+    padding-bottom: 10px;
+  }
+}
+.profile--card-name {
+  font-size: 2rem;
+  text-align: center;
+  padding: 10px 0;
+}
+.profile--card h2 {
+  font-size: 3rem;
+  text-align: center;
+  padding: 10px 0 15px 0;
+}
+.profile--card img {
+  width: 100%;
+}
+.profile--card-social {
+  display: flex;
+  justify-content: center;
+}
+.profile--card-social .fab {
+  color: white;
+  padding: 5px 5px 15px 5px;
 }
 footer {
   background-image: linear-gradient(to top, #9a9a9a, #4e4e4e);
