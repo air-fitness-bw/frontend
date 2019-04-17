@@ -1,0 +1,38 @@
+.schedule-card {
+  width: 400px;
+  margin: 20px auto;
+  font-family: "Rubik", sans-serif;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #694cf2 0%, #889bfb 100%),
+    linear-gradient(180deg, #a74cf2 0%, #7565fb 100%);
+  padding: 10px;
+  color: white;
+}
+.schedule-card h2 {
+  text-align: center;
+  margin: 5px;
+}
+.schedule-card h3 {
+  text-align: center;
+  margin: 5px 0px 10px 0px;
+}
+.schedule-card p {
+  text-align: center;
+  margin: 5px;
+}
+.schedule-card div {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.schedule-card button {
+  margin: 0 auto;
+  width: 125px;
+  text-align: center;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
+}

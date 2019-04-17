@@ -1,6 +1,6 @@
 import React from "react";
 import "./new-class.css";
-const NewClass = ({ classDetails }) => {
+const NewClass = ({ classDetails, addToSchedule }) => {
   return (
     <div className="class-card">
       <h2>{classDetails.instructor}</h2>
@@ -31,7 +31,9 @@ const NewClass = ({ classDetails }) => {
           <span className="subtitle">{classDetails.description}</span>
         </div>
         <div className="add-class-button">
-          <button>Join Class</button>
+          <button onClick={() => addToSchedule(classDetails.id)}>
+            Join Class
+          </button>
         </div>
       </div>
     </div>
