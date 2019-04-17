@@ -126,10 +126,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-* {
-  margin: 0;
-  padding: 0;
-}
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -148,28 +144,35 @@ body {
   box-sizing: border-box;
 }
 h1 {
-  font-size: 3.2rem;
+  font-size: 5rem;
 }
 h2 {
   font-size: 2.4rem;
 }
 h3 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 p {
   font-size: 1.2rem;
 }
 .header {
-  width: 90%;
-  margin: 30px auto 0px;
+  height: 130px;
+  width: 100%;
+  position: static;
 }
 @media (min-width: 1360px) {
   .header {
-    width: 1005px;
+    position: fixed;
+    background-image: linear-gradient(to right, #694cf2, #8c97fa);
+    height: 155px;
+    z-index: 5;
   }
 }
 .header--wrapper {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }
 @media (min-width: 800px) and (max-width:1360px) {
@@ -178,51 +181,55 @@ p {
     width: 720px;
   }
 }
+@media (min-width: 1360px) {
+  .header--wrapper {
+    width: 1000px;
+  }
+}
 .header--slogan {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
 }
-@media (min-width: 1360px) {
-  .header--slogan {
-    flex: 1;
-  }
+.header--slogan .header--title {
+  margin-left: 18%;
 }
-.header--title {
-  margin-left: 20%;
-}
-.header--title h1 {
-  font-size: 5rem;
+.header--slogan .header--title h1 {
   font-weight: 700;
+  margin-top: 30px;
 }
-.header--title h2 {
-  font-size: 3rem;
-  margin-top: -10px;
+.header--slogan .header--title h2 {
   font-weight: 300;
-  margin-bottom: 10px;
+  margin-top: -7px;
+  margin-bottom: 15px;
+  font-size: 3rem;
 }
-.header--title-sub h3 {
-  font-size: 1.4rem;
+.header--slogan .header--title-sub span {
+  color: #7252f3;
 }
-.header--title-sub span {
-  color: purple;
-}
-.header--links {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+@media (min-width: 1360px) {
+  .header--slogan .header--title h1 {
+    font-size: 7rem;
+    margin-top: 20px;
+    color: #f2f2f2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .header--slogan .header--title h2 {
+    font-size: 4rem;
+    color: #f2f2f2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0px;
+  }
+  .header--slogan .header--title-sub h3 {
+    font-size: 2rem;
+    color: #f2f2f2;
+  }
+  .header--slogan .header--title-sub span {
+    color: #f77e25;
+  }
 }
 .header--links .magnify {
-  margin-bottom: 8px;
-}
-.header--links .profile--icon {
-  margin-left: 8px;
-}
-@media (min-width: 1360px) {
-  .header--links .profile--icon {
-    padding-right: 15px;
-  }
+  padding-bottom: 7px;
+  padding-right: 5px;
 }
 .main-content-wrapper {
   width: 85%;
@@ -233,10 +240,9 @@ p {
 }
 @media (min-width: 1360px) {
   .main-content-wrapper {
-    margin: 0 auto 100px;
+    display: none;
   }
 }
-/*********** Nav Menu ***********/
 .nav--menu {
   margin-top: 30px;
   display: flex;
@@ -248,11 +254,6 @@ p {
   max-width: 320px;
   width: 100%;
   margin-right: 10px;
-}
-@media (min-width: 1360px) {
-  .nav--menu {
-    display: none;
-  }
 }
 .nav--menu-find,
 .nav--menu-login,
@@ -268,7 +269,7 @@ p {
   text-decoration: none;
 }
 .nav--menu-active {
-  color: orange;
+  color: #f77e25;
   background-image: linear-gradient(to right, #1ce3da, #5983e8);
   color: #fff;
 }
@@ -286,19 +287,16 @@ p {
 .main--nav a {
   text-decoration: none;
   font-size: 1.8rem;
+  color: #f2f2f2;
+}
+.main--nav a:hover {
+  color: #f77e25;
 }
 /*********** Cards *****************/
-@media (min-width: 1360px) {
-  .cards {
-    display: flex;
-    margin-top: 50px;
-  }
-}
 .cards .card {
   border-radius: 10px;
   padding: 0px 20px;
   height: 140px;
-  padding: 0px 15px;
   max-width: 340px;
 }
 .cards .card--img {
@@ -325,11 +323,6 @@ p {
   align-items: center;
   margin-top: 20px;
 }
-@media (min-width: 1360px) {
-  .cards .card--training {
-    margin-top: 0;
-  }
-}
 .cards .card--strength {
   background-image: url('../img/OrangeImage.png');
   background-repeat: no-repeat;
@@ -337,11 +330,6 @@ p {
   justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
-}
-@media (min-width: 1360px) {
-  .cards .card--strength {
-    margin-top: 0;
-  }
 }
 .cards .card--title {
   color: #fff;
@@ -351,14 +339,17 @@ p {
 .cards .card--title h2 {
   padding-bottom: 10px;
 }
+/********** EXERCISE CARDS ************/
 .exercise--cards {
   display: none;
 }
 @media (min-width: 1360px) {
   .exercise--cards {
-    width: 1006px;
+    width: 1000px;
     margin: 0 auto 200px;
     display: block;
+    padding-top: 180px;
+    box-shadow: 0px 0px 3px rgba(89, 131, 232, 0.2);
   }
   .exercise--card {
     background: #fff;
@@ -369,13 +360,22 @@ p {
     align-self: center;
   }
   .exercise--card-content h1 {
-    padding-bottom: 20px;
+    padding-bottom: 8px;
+  }
+  .exercise--card-content h2 {
+    font-size: 2rem;
+    font-style: italic;
+    color: #808080;
+    padding-bottom: 10px;
   }
   .exercise--card-content p {
     line-height: 1.8rem;
   }
   .exercise--card p {
     font-size: 1.6rem;
+  }
+  .exercise--card .skills-img {
+    margin-left: 70%;
   }
   .exercise--image {
     overflow: hidden;
