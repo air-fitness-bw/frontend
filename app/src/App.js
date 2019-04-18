@@ -142,9 +142,11 @@ class App extends Component {
   //   );
   // };
   addToSchedule = id => {
+    console.log(this.state.cart);
     const newItem = this.state.cart.find(item => {
       return item.id === id;
     });
+    console.log(newItem);
     AxiosWithAuth()
       .post("https://airfitness-backend.herokuapp.com/api/punch", {
         user_id: this.decodeId(localStorage.getItem("token")),
