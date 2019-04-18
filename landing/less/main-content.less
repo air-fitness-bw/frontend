@@ -1,15 +1,10 @@
 .main-content-wrapper {
     width: 85%;
     margin: 0 auto 170px;
-    //padding-top: 150px; need to change this back at destop screen
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    // @media @desktop {
-    //     margin: 0 auto 100px;
-    // }
 
     @media @desktop {
         display: none;
@@ -28,10 +23,6 @@
     width: 100%;
     margin-right: 10px;
 
-
-    // @media @desktop {
-    //     display: none;
-    // }
 
     &-find,
     &-login,
@@ -82,22 +73,11 @@
 
 .cards {
 
-    // @media @desktop {
-    //     display: flex;
-
-    //     margin-top: 50px;
-    // }
-
-
     .card {
         border-radius: 10px;
         padding: 0px 20px;
         height: 140px;
         max-width: 340px;
-
-        // @media @desktop {
-        //     max-width: 335px;
-        // }
 
         &--img {
             padding: 7px;
@@ -127,10 +107,6 @@
         align-items: center;
         margin-top: 20px;
 
-        // @media @desktop {
-        //     margin-top: 0;
-
-        // }
     }
 
     .card--strength {
@@ -141,10 +117,6 @@
         align-items: center;
         margin-top: 20px;
 
-        // @media @desktop {
-        //     margin-top: 0;
-            
-        // }
     }
 
     .card--title {
@@ -169,7 +141,7 @@
 
     .exercise--cards {
         width: 1000px;
-        margin: 0 auto 200px;
+        margin: 0 auto 20px;
         display: block;
         padding-top: 180px;
 
@@ -223,6 +195,8 @@
         padding: 0.5em 10px;
         quotes: "\201C""\201D""\2018""\2019";
         box-shadow: 0 2px 2px rgba(0,0,0, .3);
+
+        
     }
     blockquote:before {
         color: #5589e8;
@@ -260,7 +234,92 @@
         margin-right: 0.25em;
         vertical-align: -0.4em;
       }
-
-
 }
 
+.quote-disappear, .quote-disappear2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .4s ease-in;
+}
+.quote-appear, .quote-appear2 {
+  opacity: .8;
+  transform: translateY(0px)
+}
+
+/************* ABOUT US ******************/
+
+ @media @desktop {
+     .profile--cards {
+     padding: 0px 0px 150px 0;
+     }
+ }
+       
+
+.profile--cards-wrapper {
+    width: 90%;
+    margin: 50px auto 160px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media @tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    @media @desktop {
+        margin: 0px auto;
+        width: 60%;
+        padding-top: 180px;
+    }
+    
+}
+.profile--card {
+    background: lightblue;
+    max-width: 340px;
+    border-radius: 5px;
+    box-shadow: 5px 2px 5px rgba(0,0,0, .4);
+    margin-bottom: 15px;
+    transition: all .3s ease-in;
+    cursor: pointer;
+
+    @media @tablet {
+        
+        margin: 10px 10px;
+    }
+
+    @media @desktop {
+        &:hover {
+            box-shadow: 8px 4px 18px rgba(0,0,0, .4);
+            transform: scale(1.02);
+        }
+
+        &card:nth-child(5){
+            padding-bottom: 10px;
+        }
+    }
+
+    &-name {
+        font-size: 2rem;
+        text-align: center;
+        padding: 10px 0;
+    }
+    h2 {
+        font-size: 3rem;
+        text-align: center;
+        padding: 10px 0 15px 0;
+    }
+    img {
+        width: 100%;
+    }
+    &-social {
+        display: flex;
+        justify-content: center;
+    }
+    &-social .fab {
+        color: white;
+        padding: 5px 5px 15px 5px;
+        
+    }
+}
