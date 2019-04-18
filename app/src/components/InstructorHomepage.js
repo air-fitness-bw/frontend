@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeader from "./MainHeader";
+import InstructorHeader from "./InstructorHeader";
 import "./client-homepage.css";
 import Footer from "./Footer";
 class InstructorHomepage extends React.Component {
@@ -10,7 +10,7 @@ class InstructorHomepage extends React.Component {
   render() {
     return (
       <div>
-        <MainHeader welcome="Welcome Instructor!" />
+        <InstructorHeader welcome="Welcome Instructor!" />
         <div className="button-container">
           <button
             onClick={() => this.props.history.push("/app/create-class")}

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 
-const NavBar = () => {
+const ClientNavBar = () => {
   return (
     <div>
       <nav>
@@ -20,13 +20,8 @@ const NavBar = () => {
           </NavLink>
         </div> */}
         <div>
-          <NavLink activeClassName="selected" to="/app/instructor-page">
-            Instructors
-          </NavLink>
-        </div>
-        <div>
           <NavLink activeClassName="selected" to="/app/client-page">
-            Clients
+            Client Dashboard
           </NavLink>
         </div>
         <div>
@@ -43,4 +38,4 @@ const NavBar = () => {
     </div>
   );
 };
-export default NavBar;
+export default ClientNavBar;

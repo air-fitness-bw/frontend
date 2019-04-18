@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeader from "./MainHeader";
+import InstructorHeader from "./InstructorHeader";
 import "./add-class.css";
 
 class AddClass extends React.Component {
@@ -7,15 +7,13 @@ class AddClass extends React.Component {
     super();
     this.state = {
       newClass: {
-        price: 0,
+        price: "",
         name: "",
         start_date: "",
         schedule: "",
         location: "",
         zipcode: "",
-        description: "",
-        uses: 10,
-        instructor_id: 0
+        description: ""
       }
     };
   }
@@ -35,7 +33,7 @@ class AddClass extends React.Component {
     console.log(this.state.newClass);
     return (
       <div className="add-class-container">
-        <MainHeader welcome="Create a New Class" />
+        <InstructorHeader welcome="Create a New Class" />
         <div className="add-class">
           <form onSubmit={this.onSubmit}>
             <div id="price-container">
@@ -63,8 +61,8 @@ class AddClass extends React.Component {
             <label>Start Date: </label>
             <br />
             <input
-              value={this.state.newClass.startDate}
-              name="startDate"
+              value={this.state.newClass.start_date}
+              name="start_date"
               onChange={this.onChange}
               type="date"
             />
@@ -89,14 +87,14 @@ class AddClass extends React.Component {
               placeholder=" Location"
             />
             <br />
-            <input
+            {/* <input
               value={this.state.newClass.instructor}
               onChange={this.onChange}
               type="number"
               name="instructor_id"
               placeholder=" Instructor Name"
             />
-            <br />
+            <br /> */}
             <label>Zipcode: </label>
             <br />
             <input

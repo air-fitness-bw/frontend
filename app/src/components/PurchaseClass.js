@@ -9,6 +9,9 @@ class PurchaseClass extends React.Component {
     super(props);
     this.state = {};
   }
+  getId = id => {
+    return id;
+  };
   render() {
     return (
       <div>
@@ -20,13 +23,16 @@ class PurchaseClass extends React.Component {
               removeFromCart={this.props.removeFromCart}
               key={product.id}
               product={product}
+              getId={this.getId}
             />
           );
         })}
         <hr />
         <h2 className="checkout-total">Total: ${this.props.cartTotal}</h2>
         <div className="purchase-container">
-          <button>Purchase Items</button>
+          <button onClick={() => this.props.addToSchedule(this.getId)}>
+            Purchase Items
+          </button>
         </div>
         <Footer />
       </div>

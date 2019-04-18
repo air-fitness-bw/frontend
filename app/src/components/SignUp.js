@@ -29,7 +29,6 @@ class SignUp extends React.Component {
     this.props.signUp(this.state.credentials);
   };
   render() {
-    console.log(this.state.credentials);
     return (
       <div>
         <Header banner="Welcome to Air fitness!" />
@@ -68,6 +67,7 @@ class SignUp extends React.Component {
               onChange={this.onChange}
               name="role"
               className="select-option"
+              required
             >
               <option />
               <option value="instructor">Instructor</option>

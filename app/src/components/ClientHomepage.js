@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeader from "./MainHeader";
+import ClientHeader from "./ClientHeader";
 import "./client-homepage.css";
 import Footer from "./Footer";
 
@@ -11,7 +11,7 @@ class ClientHomepage extends React.Component {
   render() {
     return (
       <div>
-        <MainHeader welcome="Welcome Client!" />
+        <ClientHeader welcome="Welcome Client!" />
         <div className="button-container">
           <button
             onClick={() => this.props.history.push("/app/find-class")}
