@@ -42,10 +42,12 @@ class Login extends React.Component {
               type="text"
               placeholder=" Email"
               name="username"
+              autoComplete="username"
               value={this.state.credentials.username}
             />
             <br />
             <input
+              autoComplete="current-password"
               onChange={this.onChange}
               type="password"
               placeholder=" Password"

@@ -7,13 +7,15 @@ class AddClass extends React.Component {
     super();
     this.state = {
       newClass: {
-        price: "",
+        price: 0,
         name: "",
-        startDate: "",
+        start_date: "",
         schedule: "",
         location: "",
         zipcode: "",
-        description: ""
+        description: "",
+        uses: 10,
+        instructor_id: 0
       }
     };
   }
@@ -27,7 +29,7 @@ class AddClass extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    this.props.login(this.state.newClass);
+    this.props.addNewClass(this.state.newClass);
   };
   render() {
     console.log(this.state.newClass);
@@ -35,7 +37,7 @@ class AddClass extends React.Component {
       <div className="add-class-container">
         <MainHeader welcome="Create a New Class" />
         <div className="add-class">
-          <form>
+          <form onSubmit={this.onSubmit}>
             <div id="price-container">
               <label>Punch Pass Price: </label>
               <br />
@@ -85,6 +87,14 @@ class AddClass extends React.Component {
               type="text"
               name="location"
               placeholder=" Location"
+            />
+            <br />
+            <input
+              value={this.state.newClass.instructor}
+              onChange={this.onChange}
+              type="number"
+              name="instructor_id"
+              placeholder=" Instructor Name"
             />
             <br />
             <label>Zipcode: </label>

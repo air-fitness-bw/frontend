@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "./MainHeader";
 import "./client-homepage.css";
+import Footer from "./Footer";
 
 class ClientHomepage extends React.Component {
   constructor(props) {
@@ -19,13 +20,19 @@ class ClientHomepage extends React.Component {
             Find a Class
           </button>
           <button className="orange-button">Purchase a Punchpass</button>
-          <button className="darkblue-button">My Schedule</button>
+          <button
+            onClick={() => this.props.history.push("/app/my-schedule")}
+            className="darkblue-button"
+          >
+            My Schedule
+          </button>
         </div>
         <div className="button-container2">
           <button className="blue-button">Class Schedule</button>
           <button className="orange-button">Add Clients to Class</button>
           <button className="darkblue-button">Attendance</button>
         </div>
+        <Footer />
       </div>
     );
   }
