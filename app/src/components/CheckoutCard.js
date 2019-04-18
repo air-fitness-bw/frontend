@@ -1,8 +1,8 @@
 import React from "react";
 import "./checkout-card.css";
-const CheckoutCard = ({ product, removeFromCart }) => {
+const CheckoutCard = ({ product, getId }) => {
   return (
-    <div className="checkout-card-container">
+    <div onLoad={getId(product.id)} className="checkout-card-container">
       <div className="checkout-title">
         <p>{product.name}</p>
         <p>${product.price}</p>
@@ -10,12 +10,12 @@ const CheckoutCard = ({ product, removeFromCart }) => {
       </div>
       <p>{product.description}</p>
       <div className="checkout-button-container">
-        <button
+        {/* <button
           className="checkout-button"
           onClick={() => removeFromCart(product.id)}
         >
           Remove
-        </button>
+        </button> */}
       </div>
     </div>
   );

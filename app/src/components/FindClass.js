@@ -1,12 +1,12 @@
 import React from "react";
-import MainHeader from "./MainHeader";
+import ClientHeader from "./ClientHeader";
 import NewClass from "./NewClass";
 import Footer from "./Footer";
 import "./new-class.css";
 const FindClass = props => {
   return (
     <div>
-      <MainHeader welcome="Join a New Class" />
+      <ClientHeader welcome="Join a New Class" />
       <div className="search-container">
         <input
           className="search-bar"
@@ -24,6 +24,7 @@ const FindClass = props => {
             classDetails={newClass}
             history={props.history}
             addToCart={props.addToCart}
+            removeClass={props.removeClass}
           />
         );
       })}

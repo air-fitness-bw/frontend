@@ -1,7 +1,7 @@
 import React from "react";
 import "./new-class.css";
 
-const NewClass = ({ classDetails, addToCart, history }) => {
+const NewClass = ({ classDetails, addToCart, history, removeClass }) => {
   function GetFormattedDate(date) {
     let todayTime = new Date(date);
     let month = todayTime.getMonth() + 1;
@@ -47,6 +47,7 @@ const NewClass = ({ classDetails, addToCart, history }) => {
           <button onClick={() => history.push("/app/purchase-class")}>
             Checkout
           </button>
+          <button onClick={() => removeClass(classDetails.id)}>X</button>
         </div>
       </div>
     </div>

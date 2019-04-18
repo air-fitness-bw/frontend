@@ -20,16 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       classList: newClass,
-      mySchedule: [
-        {
-          id: 0,
-          instructor: "John Doe",
-          name: "Free Running",
-          schedule: "Fridays at 6PM",
-          location: "Canyon Park",
-          passes: ""
-        }
-      ],
+      mySchedule: [],
       cart: [],
       cartTotal: 0,
       status: {
@@ -40,9 +31,10 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    axios
-      .get("https://airfitness-backend.herokuapp.com/api/class")
+    AxiosWithAuth()
+      .get("https://airfitness-backend.herokuapp.com/api/class/all")
       .then(res => {
+        console.log(res.data);
         this.setState({
           ...this.state,
           classList: res.data
@@ -52,9 +44,27 @@ class App extends Component {
         console.log(err);
       });
   }
+  /////// Set up axios call to retrieve data from server
+  getClassList = () => {
+    axios
+      .get("https://airfitness-backend.herokuapp.com/api/class/all")
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          ...this.state,
+          classList: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   /////// Decode token and return user role
   decode = token => {
     return jwt_decode(token).role;
+  };
+  decodeId = token => {
+    return jwt_decode(token).subject;
   };
 
   //////// axios call sending credentials upon response add token to local storage
@@ -126,18 +136,41 @@ class App extends Component {
         console.log(err.response);
       });
   };
+  // addToSchedule = id => {
+  //   this.addToSchedulePromise(id).then(
+  //     this.props.history.push("/app/my-schedule")
+  //   );
+  // };
   addToSchedule = id => {
-    const newSchedule = this.state.classList.find(item => {
+    const newItem = this.state.cart.find(item => {
       return item.id === id;
     });
-    if (this.state.mySchedule.find(item => item.id === id)) {
-      alert("class is already on schedule");
-    } else {
-      this.setState({
-        ...this.state,
-        mySchedule: [...this.state.mySchedule, newSchedule]
+    AxiosWithAuth()
+      .post("https://airfitness-backend.herokuapp.com/api/punch", {
+        user_id: this.decodeId(localStorage.getItem("token")),
+        class_id: id
+      })
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          ...this.state,
+          mySchedule: newItem
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    }
+    // const newSchedule = this.state.cart.find(item => {
+    //   return item.id === id;
+    // });
+    // if (this.state.mySchedule.find(item => item.id === id)) {
+    //   alert("class is already on schedule");
+    // } else {
+    //   this.setState({
+    //     ...this.state,
+    //     mySchedule: [...this.state.mySchedule, newSchedule]
+    //   });
+    // }
   };
   updateTotal = amount => {
     this.setState(prevState => {
@@ -160,27 +193,21 @@ class App extends Component {
       });
     }
   };
-  removeFromCart = id => {
-    console.log(id);
-    axios
+  removeClass = id => {
+    AxiosWithAuth()
       .delete(`https://airfitness-backend.herokuapp.com/api/class/${id}`)
       .then(res => {
-        this.setState({
-          ...this.state,
-          classList: res.data
-        });
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   };
   addNewClass = classObj => {
-    axios
-      .post("https://airfitness-backend.herokuapp.com/api/class", {
-        ...classObj,
-        start_date: classObj.start_date.split("-").join("/")
-      })
+    AxiosWithAuth()
+      .post("https://airfitness-backend.herokuapp.com/api/class", classObj)
       .then(res => {
+        console.log(res.data);
         this.setState({
           ...this.state,
           classList: res.data
@@ -204,13 +231,14 @@ class App extends Component {
           exact
           path="/app/client-page"
           component={ClientHomepage}
+          getClassList={this.getClassList}
         />
-        {/* <PrivateRouteClient
+        <PrivateRouteClient
           exact
           path="/app/instructor-page"
           component={InstructorHomepage}
-        /> */}
-        <Route path="/app/instructor-page" component={InstructorHomepage} />
+        />
+        {/* <Route path="/app/instructor-page" component={InstructorHomepage} /> */}
         <Route
           path="/app/create-class"
           render={props => (
@@ -225,6 +253,7 @@ class App extends Component {
               addToSchedule={this.addToSchedule}
               {...props}
               classes={this.state.classList}
+              removeClass={this.removeClass}
             />
           )}
         />
@@ -242,6 +271,7 @@ class App extends Component {
               cartTotal={this.state.cartTotal}
               cart={this.state.cart}
               removeFromCart={this.removeFromCart}
+              addToSchedule={this.addToSchedule}
             />
           )}
         />
