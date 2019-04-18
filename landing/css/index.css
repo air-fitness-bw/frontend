@@ -436,6 +436,17 @@ p {
     vertical-align: -0.4em;
   }
 }
+.quote-disappear,
+.quote-disappear2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-in;
+}
+.quote-appear,
+.quote-appear2 {
+  opacity: 0.8;
+  transform: translateY(0px);
+}
 /************* ABOUT US ******************/
 .profile--cards-wrapper {
   width: 90%;

@@ -223,6 +223,8 @@
         padding: 0.5em 10px;
         quotes: "\201C""\201D""\2018""\2019";
         box-shadow: 0 2px 2px rgba(0,0,0, .3);
+
+        
     }
     blockquote:before {
         color: #5589e8;
@@ -260,6 +262,16 @@
         margin-right: 0.25em;
         vertical-align: -0.4em;
       }
+}
+
+.quote-disappear, .quote-disappear2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .4s ease-in;
+}
+.quote-appear, .quote-appear2 {
+  opacity: .8;
+  transform: translateY(0px)
 }
 
 /************* ABOUT US ******************/
