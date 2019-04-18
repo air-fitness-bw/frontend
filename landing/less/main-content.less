@@ -1,15 +1,10 @@
 .main-content-wrapper {
     width: 85%;
     margin: 0 auto 170px;
-    //padding-top: 150px; need to change this back at destop screen
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    // @media @desktop {
-    //     margin: 0 auto 100px;
-    // }
 
     @media @desktop {
         display: none;
@@ -28,10 +23,6 @@
     width: 100%;
     margin-right: 10px;
 
-
-    // @media @desktop {
-    //     display: none;
-    // }
 
     &-find,
     &-login,
@@ -82,22 +73,11 @@
 
 .cards {
 
-    // @media @desktop {
-    //     display: flex;
-
-    //     margin-top: 50px;
-    // }
-
-
     .card {
         border-radius: 10px;
         padding: 0px 20px;
         height: 140px;
         max-width: 340px;
-
-        // @media @desktop {
-        //     max-width: 335px;
-        // }
 
         &--img {
             padding: 7px;
@@ -127,10 +107,6 @@
         align-items: center;
         margin-top: 20px;
 
-        // @media @desktop {
-        //     margin-top: 0;
-
-        // }
     }
 
     .card--strength {
@@ -141,10 +117,6 @@
         align-items: center;
         margin-top: 20px;
 
-        // @media @desktop {
-        //     margin-top: 0;
-            
-        // }
     }
 
     .card--title {
@@ -169,7 +141,7 @@
 
     .exercise--cards {
         width: 1000px;
-        margin: 0 auto 200px;
+        margin: 0 auto 20px;
         display: block;
         padding-top: 180px;
 
@@ -275,6 +247,13 @@
 }
 
 /************* ABOUT US ******************/
+
+ @media @desktop {
+     .profile--cards {
+     padding: 0px 0px 150px 0;
+     }
+ }
+       
 
 .profile--cards-wrapper {
     width: 90%;

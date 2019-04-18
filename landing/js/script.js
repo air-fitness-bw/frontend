@@ -1,5 +1,6 @@
 
 
+
  function quoteAppear() {
      let quote = document.querySelector('.quote-disappear');
      let distance = quote.getBoundingClientRect().top;
@@ -23,5 +24,4 @@
 }
 
 window.addEventListener('scroll', quoteAppear);
-
 window.addEventListener('scroll', quoteAppear2);
