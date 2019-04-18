@@ -9,8 +9,10 @@ class SignUp extends React.Component {
     super(props);
     this.state = {
       credentials: {
+        name: "",
         username: "",
-        password: ""
+        password: "",
+        role: ""
       }
     };
   }
@@ -47,6 +49,7 @@ class SignUp extends React.Component {
               onChange={this.onChange}
               placeholder=" Email"
               name="username"
+              autoComplete="username"
             />
             <br />
             <input
@@ -55,6 +58,7 @@ class SignUp extends React.Component {
               onChange={this.onChange}
               placeholder=" Password"
               name="password"
+              autoComplete="new-password"
             />
             <br />
             <label className="profile-choice">Choose Your Profile Type: </label>

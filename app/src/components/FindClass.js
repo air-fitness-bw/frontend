@@ -22,6 +22,8 @@ const FindClass = props => {
             addToSchedule={props.addToSchedule}
             key={newClass.id}
             classDetails={newClass}
+            history={props.history}
+            addToCart={props.addToCart}
           />
         );
       })}

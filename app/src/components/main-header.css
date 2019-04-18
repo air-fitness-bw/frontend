@@ -6,6 +6,10 @@
   border-radius: 0 0 0 300px;
   margin-bottom: 200px;
 }
+.oval img {
+  position: relative;
+  z-index: 3;
+}
 .logo {
   display: flex;
   justify-content: space-between;
@@ -32,4 +36,8 @@
 .greeting {
   text-align: center;
   font-size: 32px;
+}
+.checkout-header {
+  height: 200px;
+  background: linear-gradient(90deg, rgba(123, 124, 249, 0) 0%, #7c69f8 100%);
 }

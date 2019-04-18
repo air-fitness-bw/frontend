@@ -1,10 +1,10 @@
 import {
   LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  SIGN_UP_START,
-  SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE
+  LOGIN_SUCCESS
+  // LOGIN_FAILURE,
+  // SIGN_UP_START,
+  // SIGN_UP_SUCCESS,
+  // SIGN_UP_FAILURE
 } from "../actions";
 
 const initialState = {

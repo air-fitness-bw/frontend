@@ -13,7 +13,7 @@ export const login = creds => dispatch => {
       // localStorage.setItem("token", res.data.payload);
       // dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
     })
-    .catch(err => console.log(err.response));
+    .catch(err => console.log(err));
 };
 
 export const SIGN_UP_START = "SIGN_UP_START";
@@ -29,5 +29,5 @@ export const signUp = creds => dispatch => {
       // localStorage.setItem("token", res.data.payload);
       // dispatch({ type: SIGN_UP_SUCCESS, payload: res.data.payload });
     })
-    .catch(err => console.log(err.response));
+    .catch(err => console.log(err));
 };

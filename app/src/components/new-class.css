@@ -38,9 +38,8 @@
 }
 .add-class-button {
   margin: 20px auto 10px auto;
-  width: 125px;
+  width: 250px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
 }
@@ -49,6 +48,7 @@
   font-size: 18px;
   font-weight: bold;
   font-family: "Rubik", sans-serif;
+  margin-left: 10px;
 }
 .search-container {
   display: flex;

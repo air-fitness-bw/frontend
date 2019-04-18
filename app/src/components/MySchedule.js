@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "./MainHeader";
 import ScheduleCard from "./ScheduleCard";
+import Footer from "./Footer";
 
 class MySchedule extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class MySchedule extends React.Component {
         {this.state.mySchedule.map(item => {
           return <ScheduleCard key={item.id} schedule={item} />;
         })}
+        <Footer />
       </div>
     );
   }

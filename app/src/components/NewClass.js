@@ -1,6 +1,6 @@
 import React from "react";
 import "./new-class.css";
-const NewClass = ({ classDetails, addToSchedule }) => {
+const NewClass = ({ classDetails, addToCart, history }) => {
   return (
     <div className="class-card">
       <h2>{classDetails.instructor}</h2>
@@ -8,15 +8,15 @@ const NewClass = ({ classDetails, addToSchedule }) => {
       <h4>${classDetails.price}</h4>
       <div className="class-details">
         <p>
-          <span className="title">Start Date: </span>{" "}
+          <span className="title">Starts: </span>{" "}
           <span className="subtitle">{classDetails.startDate}</span>
         </p>
         <p>
-          <span className="title">Weekly Schedule: </span>
+          <span className="title">Schedule: </span>
           <span className="subtitle">{classDetails.schedule}</span>
         </p>
         <p>
-          <span className="title">Class Location: </span>
+          <span className="title">Location: </span>
           <span className="subtitle">{classDetails.location}</span>
         </p>
         <p>
@@ -31,8 +31,11 @@ const NewClass = ({ classDetails, addToSchedule }) => {
           <span className="subtitle">{classDetails.description}</span>
         </div>
         <div className="add-class-button">
-          <button onClick={() => addToSchedule(classDetails.id)}>
-            Join Class
+          <button onClick={() => addToCart(classDetails.id)}>
+            Add to Cart
+          </button>
+          <button onClick={() => history.push("/app/purchase-class")}>
+            Checkout
           </button>
         </div>
       </div>
