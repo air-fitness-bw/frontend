@@ -14,7 +14,6 @@ class AddClass extends React.Component {
         location: "",
         zipcode: "",
         description: "",
-        uses: 10,
         instructor_id: 0
       }
     };
@@ -63,8 +62,8 @@ class AddClass extends React.Component {
             <label>Start Date: </label>
             <br />
             <input
-              value={this.state.newClass.startDate}
-              name="startDate"
+              value={this.state.newClass.start_date}
+              name="start_date"
               onChange={this.onChange}
               type="date"
             />

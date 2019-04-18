@@ -30,7 +30,12 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div>
-          <NavLink activeClassName="selected" exact to="/">
+          <NavLink
+            onClick={() => localStorage.removeItem("token")}
+            activeClassName="selected"
+            exact
+            to="/app/login"
+          >
             Log Out
           </NavLink>
         </div>

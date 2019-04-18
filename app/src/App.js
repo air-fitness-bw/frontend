@@ -3,9 +3,8 @@ import axios from "axios";
 import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import { login, signUp } from "./actions";
 import { Route } from "react-router-dom";
-import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
 import ClientHomepage from "./components/ClientHomepage";
 import InstructorHomepage from "./components/InstructorHomepage";
 import AddClass from "./components/AddClass";
@@ -13,6 +12,8 @@ import FindClass from "./components/FindClass";
 import { newClass } from "./components/data";
 import MySchedule from "./components/MySchedule";
 import PurchaseClass from "./components/PurchaseClass";
+import PrivateRouteClient from "./components/PrivateRouteClient";
+import AxiosWithAuth from "./components/axiosWithAuth";
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,12 @@ class App extends Component {
         }
       ],
       cart: [],
-      cartTotal: 0
+      cartTotal: 0,
+      status: {
+        user_id: "",
+        loggedIn: false,
+        role: ""
+      }
     };
   }
   componentDidMount() {
@@ -46,6 +52,80 @@ class App extends Component {
         console.log(err);
       });
   }
+  /////// Decode token and return user role
+  decode = token => {
+    return jwt_decode(token).role;
+  };
+
+  //////// axios call sending credentials upon response add token to local storage
+  //////// and update state with user info and loggedIN state
+  signUpPromise = creds => {
+    return axios
+      .post("https://airfitness-backend.herokuapp.com/api/users/reg", creds)
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        this.setState({
+          ...this.state,
+          status: {
+            user_id: res.data.user_id,
+            loggedIn: !this.state.status.loggedIn
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+  signUp = creds => {
+    this.signUpPromise(creds).then(() => {
+      if (this.decode(localStorage.getItem("token")) === "client") {
+        this.loginPromise(creds).then(
+          this.props.history.push("/app/client-page")
+        );
+      } else {
+        console.log("Not a client");
+        this.props.history.push("/app/instructor-page");
+      }
+    });
+  };
+  /////////// login functjion that takes in credentials and executes a axios promise
+  /////////// with the credentials after promise resolves push user to the correct page
+  ////////// based on their role
+
+  login = creds => {
+    this.loginPromise(creds).then(() => {
+      if (this.decode(localStorage.getItem("token")) === "client") {
+        this.loginPromise(creds).then(
+          this.props.history.push("/app/client-page")
+        );
+      } else {
+        console.log("Not a client");
+        this.props.history.push("/app/instructor-page");
+      }
+    });
+
+    // this.loginPromise(creds).then(this.props.history.push("/app/client-page"));
+  };
+  loginPromise = creds => {
+    return axios
+      .post("https://airfitness-backend.herokuapp.com/api/users/login", creds)
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        // this.decode(localStorage.getItem("token"));
+        this.setState({
+          ...this.state,
+          status: {
+            user_id: res.data.user_id,
+            loggedIn: !this.state.status.loggedIn
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
   addToSchedule = id => {
     const newSchedule = this.state.classList.find(item => {
       return item.id === id;
@@ -60,9 +140,7 @@ class App extends Component {
     }
   };
   updateTotal = amount => {
-    console.log(amount);
     this.setState(prevState => {
-      console.log(prevState.cartTotal + amount);
       return {
         ...this.state,
         cartTotal: prevState.cartTotal + amount
@@ -100,8 +178,7 @@ class App extends Component {
     axios
       .post("https://airfitness-backend.herokuapp.com/api/class", {
         ...classObj,
-        price: Number(classObj.price),
-        instructor_id: Number(classObj.instructor_id)
+        start_date: classObj.start_date.split("-").join("/")
       })
       .then(res => {
         this.setState({
@@ -112,18 +189,27 @@ class App extends Component {
       .catch(err => console.log(err.response));
   };
   render() {
-    console.log("rendering", this.state.cartTotal);
     return (
       <div className="App">
         <Route
           path="/app/login"
-          render={props => <Login {...props} login={this.props.login} />}
+          render={props => <Login {...props} login={this.login} />}
         />
         <Route
           path="/app/signup"
-          render={props => <SignUp {...props} signUp={this.props.signUp} />}
+          render={props => <SignUp {...props} signUp={this.signUp} />}
         />
-        <Route path="/app/client-page" component={ClientHomepage} />
+        {/* <Route path="/app/client-page" component={ClientHomepage} /> */}
+        <PrivateRouteClient
+          exact
+          path="/app/client-page"
+          component={ClientHomepage}
+        />
+        {/* <PrivateRouteClient
+          exact
+          path="/app/instructor-page"
+          component={InstructorHomepage}
+        /> */}
         <Route path="/app/instructor-page" component={InstructorHomepage} />
         <Route
           path="/app/create-class"
@@ -164,7 +250,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  null,
-  { login, signUp }
-)(App);
+export default App;

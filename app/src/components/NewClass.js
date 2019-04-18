@@ -1,6 +1,14 @@
 import React from "react";
 import "./new-class.css";
+
 const NewClass = ({ classDetails, addToCart, history }) => {
+  function GetFormattedDate(date) {
+    let todayTime = new Date(date);
+    let month = todayTime.getMonth() + 1;
+    let day = todayTime.getDate();
+    let year = todayTime.getFullYear();
+    return month + "/" + day + "/" + year;
+  }
   return (
     <div className="class-card">
       <h2>{classDetails.instructor}</h2>
@@ -8,8 +16,10 @@ const NewClass = ({ classDetails, addToCart, history }) => {
       <h4>${classDetails.price}</h4>
       <div className="class-details">
         <p>
-          <span className="title">Starts: </span>{" "}
-          <span className="subtitle">{classDetails.startDate}</span>
+          <span className="title">Starts: </span>
+          <span className="subtitle">
+            {GetFormattedDate(classDetails.start_date)}
+          </span>
         </p>
         <p>
           <span className="title">Schedule: </span>
