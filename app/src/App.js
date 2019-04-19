@@ -30,11 +30,11 @@ class App extends Component {
       }
     };
   }
+  /////// API call to set state with data for all available classes when app loads
   componentDidMount() {
     AxiosWithAuth()
       .get("https://airfitness-backend.herokuapp.com/api/class/all")
       .then(res => {
-        // console.log(res.data);
         this.setState({
           ...this.state,
           classList: res.data
@@ -44,7 +44,8 @@ class App extends Component {
         console.log(err);
       });
   }
-  /////// Set up axios call to retrieve data from server
+  /////// Set up axios call to retrieve class data from server whenever function is called
+  /////// and set state based on new data retrieved
   getClassList = () => {
     axios
       .get("https://airfitness-backend.herokuapp.com/api/class/all")
@@ -100,8 +101,8 @@ class App extends Component {
       }
     });
   };
-  /////////// login functjion that takes in credentials and executes a axios promise
-  /////////// with the credentials after promise resolves push user to the correct page
+  /////////// login function that takes in credentials and executes an axios promise
+  /////////// with the credentials after the promise resolves it will push the user to the correct page
   ////////// based on their role
 
   login = creds => {
@@ -115,16 +116,16 @@ class App extends Component {
         this.props.history.push("/app/instructor-page");
       }
     });
-
-    // this.loginPromise(creds).then(this.props.history.push("/app/client-page"));
   };
+
+  ///// This function returns an axios promise that will be used above
+
   loginPromise = creds => {
     return axios
       .post("https://airfitness-backend.herokuapp.com/api/users/login", creds)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        // this.decode(localStorage.getItem("token"));
         this.setState({
           ...this.state,
           status: {
@@ -137,19 +138,12 @@ class App extends Component {
         console.log(err.response);
       });
   };
-  // addToSchedule = id => {
-  //   this.addToSchedulePromise(id).then(
-  //     this.props.history.push("/app/my-schedule")
-  //   );
-  // };
+
+  ////// this function returns a promise that will add classes to the
+  ///// clients schedule the axios call is taking in the class_name and
+  ///// user id which is decoded from the token received on login
 
   addToSchedulePromise = id => {
-    // console.log(this.state.cart);
-    // const newItem = this.state.cart.find(item => {
-    //   return item.id === id;
-    // });
-    // console.log(newItem);
-
     return AxiosWithAuth()
       .post("https://airfitness-backend.herokuapp.com/api/punch", {
         user_id: this.decodeId(localStorage.getItem("token")),
@@ -162,21 +156,20 @@ class App extends Component {
         console.log(err);
       });
   };
+
+  /////// this function takes in the class_name as id and executes the axios promise
+  /////// after it is resolved the user is pushed to the 'my-schedule' path
+
   addToSchedule = id => {
     console.log(id);
     this.addToSchedulePromise(id).then(
       this.props.history.push("/app/my-schedule")
-      // AxiosWithAuth()
-      //   .get("https://airfitness-backend.herokuapp.com/api/punch")
-      //   .then(res => {
-      //     this.setState({
-      //       ...this.state,
-      //       schedule: [...this.state.mySchedule, res.data]
-      //     });
-      //   })
-      //   .catch(err => console.log(err.response))
     );
   };
+
+  ///// this function takes in the cost of the class that has been recently added to the cart
+  ///// and adds it to the current total of all items in the cart
+
   updateTotal = amount => {
     this.setState(prevState => {
       return {
@@ -185,6 +178,10 @@ class App extends Component {
       };
     });
   };
+  ///// this function takes the id of the class selected from the
+  //// 'purchase-class' page and adds them to the cart if the
+  //// class is already in the cart the user will be alerted
+
   addToCart = id => {
     const addItem = this.state.classList.find(item => {
       return item.id === id;
@@ -198,6 +195,10 @@ class App extends Component {
       });
     }
   };
+  //// this function isn't used in the current deployment of the app
+  //// but it takes in a class id and executes a promise, after the
+  //// promise resolves another axios promise is chained to get a newly
+  //// updated list of classes
   removeClass = id => {
     this.removeClassPromise(id).then(
       AxiosWithAuth()
@@ -211,6 +212,8 @@ class App extends Component {
         .catch(err => console.log(err.response))
     );
   };
+  ///// this function returns a promise that will be used in a promise
+  //// chain above
   removeClassPromise = id => {
     return AxiosWithAuth()
       .delete(`https://airfitness-backend.herokuapp.com/api/class/${id}`)
@@ -221,6 +224,10 @@ class App extends Component {
         console.log(err);
       });
   };
+  //// this function takes in a class object that was created by an
+  //// instructor and creates a new class, the axios response is then
+  //// used to set state with the new list of classes returned.
+
   addNewClass = classObj => {
     AxiosWithAuth()
       .post("https://airfitness-backend.herokuapp.com/api/class", classObj)
@@ -244,7 +251,6 @@ class App extends Component {
           path="/app/signup"
           render={props => <SignUp {...props} signUp={this.signUp} />}
         />
-        {/* <Route path="/app/client-page" component={ClientHomepage} /> */}
         <PrivateRouteClient
           exact
           path="/app/client-page"
@@ -256,7 +262,6 @@ class App extends Component {
           path="/app/instructor-page"
           component={InstructorHomepage}
         />
-        {/* <Route path="/app/instructor-page" component={InstructorHomepage} /> */}
         <Route
           path="/app/create-class"
           render={props => (
