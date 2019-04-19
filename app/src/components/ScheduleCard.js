@@ -1,15 +1,16 @@
 import React from "react";
 import "./schedule-card.css";
 
-const ScheduleCard = ({ schedule }) => {
+const ScheduleCard = ({ schedule, removeClass }) => {
   return (
     <div className="schedule-card">
       <h2>{schedule.instructor}</h2>
-      <h3>{schedule.name}</h3>
+      <h3>{schedule.class_name}</h3>
       <p>{schedule.schedule}</p>
       <p>{schedule.location}</p>
+      <p>Punches Remaining: {schedule.uses}</p>
       <div>
-        <button>Remove</button>
+        <button onClick={() => removeClass(schedule.id)}>Remove</button>
       </div>
     </div>
   );
