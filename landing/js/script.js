@@ -1,27 +1,38 @@
 
 
 
- function quoteAppear() {
-     let quote = document.querySelector('.quote-disappear');
-     let distance = quote.getBoundingClientRect().top;
+
+
+
+class MasterEffect {
+   constructor(effect) {
+    this.effect = effect;
     
-     let windowHeight = window.innerHeight / 1.2;
+     this.appear = document.querySelector('.quote-disappear');
 
-     if(distance < windowHeight){
-        quote.classList.add('quote-appear')
-     }
- }
+     this.distance = effect.getBoundingClientRect().top;
+     
+     this.windowHeight = window.innerHeight / 1.2;
 
- function quoteAppear2() {
-    let quote = document.querySelector('.quote-disappear2');
-    let distance = quote.getBoundingClientRect().top;
-   
-    let windowHeight = window.innerHeight / 1.2;
-
-    if(distance < windowHeight){
-       quote.classList.add('quote-appear2')
+   }
+   fadeIn() {
+       
+    if(this.distance < this.windowHeight + window.scrollY){
+       this.effect.classList.add('quote-appear')
     }
+   }
 }
 
-window.addEventListener('scroll', quoteAppear);
-window.addEventListener('scroll', quoteAppear2);
+let effects = Array.from(document.querySelectorAll('.quote-disappear'));  // 1
+
+
+effects = effects.map(effect => new MasterEffect(effect)); // 2
+
+
+window.addEventListener('scroll', () => checkMe()); // 3
+
+function checkMe() {
+ effects.map(item => {
+     item.fadeIn()
+ })
+}
