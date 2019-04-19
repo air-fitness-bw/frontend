@@ -9,17 +9,17 @@ import ClientHomepage from "./components/ClientHomepage";
 import InstructorHomepage from "./components/InstructorHomepage";
 import AddClass from "./components/AddClass";
 import FindClass from "./components/FindClass";
-import { newClass } from "./components/data";
 import MySchedule from "./components/MySchedule";
 import PurchaseClass from "./components/PurchaseClass";
 import PrivateRouteClient from "./components/PrivateRouteClient";
 import AxiosWithAuth from "./components/axiosWithAuth";
+import EditClass from "./components/EditClass";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classList: newClass,
+      classList: [],
       mySchedule: [],
       cart: [],
       cartTotal: 0,
@@ -34,7 +34,7 @@ class App extends Component {
     AxiosWithAuth()
       .get("https://airfitness-backend.herokuapp.com/api/class/all")
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({
           ...this.state,
           classList: res.data
@@ -63,6 +63,7 @@ class App extends Component {
   decode = token => {
     return jwt_decode(token).role;
   };
+  ////// Decode token and return user_id
   decodeId = token => {
     return jwt_decode(token).subject;
   };
@@ -141,38 +142,40 @@ class App extends Component {
   //     this.props.history.push("/app/my-schedule")
   //   );
   // };
-  addToSchedule = id => {
-    console.log(this.state.cart);
-    const newItem = this.state.cart.find(item => {
-      return item.id === id;
-    });
-    console.log(newItem);
-    AxiosWithAuth()
+
+  addToSchedulePromise = id => {
+    // console.log(this.state.cart);
+    // const newItem = this.state.cart.find(item => {
+    //   return item.id === id;
+    // });
+    // console.log(newItem);
+
+    return AxiosWithAuth()
       .post("https://airfitness-backend.herokuapp.com/api/punch", {
         user_id: this.decodeId(localStorage.getItem("token")),
-        class_id: id
+        class_name: id
       })
       .then(res => {
         console.log(res.data);
-        this.setState({
-          ...this.state,
-          mySchedule: newItem
-        });
       })
       .catch(err => {
         console.log(err);
       });
-    // const newSchedule = this.state.cart.find(item => {
-    //   return item.id === id;
-    // });
-    // if (this.state.mySchedule.find(item => item.id === id)) {
-    //   alert("class is already on schedule");
-    // } else {
-    //   this.setState({
-    //     ...this.state,
-    //     mySchedule: [...this.state.mySchedule, newSchedule]
-    //   });
-    // }
+  };
+  addToSchedule = id => {
+    console.log(id);
+    this.addToSchedulePromise(id).then(
+      this.props.history.push("/app/my-schedule")
+      // AxiosWithAuth()
+      //   .get("https://airfitness-backend.herokuapp.com/api/punch")
+      //   .then(res => {
+      //     this.setState({
+      //       ...this.state,
+      //       schedule: [...this.state.mySchedule, res.data]
+      //     });
+      //   })
+      //   .catch(err => console.log(err.response))
+    );
   };
   updateTotal = amount => {
     this.setState(prevState => {
@@ -196,7 +199,20 @@ class App extends Component {
     }
   };
   removeClass = id => {
-    AxiosWithAuth()
+    this.removeClassPromise(id).then(
+      AxiosWithAuth()
+        .get("https://airfitness-backend.herokuapp.com/api/class/all")
+        .then(res => {
+          this.setState({
+            ...this.state,
+            classList: res.data
+          });
+        })
+        .catch(err => console.log(err.response))
+    );
+  };
+  removeClassPromise = id => {
+    return AxiosWithAuth()
       .delete(`https://airfitness-backend.herokuapp.com/api/class/${id}`)
       .then(res => {
         console.log(res.data);
@@ -262,7 +278,11 @@ class App extends Component {
         <Route
           path="/app/my-schedule"
           render={props => (
-            <MySchedule schedule={this.state.mySchedule} {...props} />
+            <MySchedule
+              removeClass={this.removeClass}
+              schedule={this.state.mySchedule}
+              {...props}
+            />
           )}
         />
         <Route
@@ -277,6 +297,7 @@ class App extends Component {
             />
           )}
         />
+        <Route path="/app/my-classes" component={EditClass} />
       </div>
     );
   }

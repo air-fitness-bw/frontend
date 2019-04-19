@@ -1,7 +1,7 @@
 import React from "react";
 import "./new-class.css";
 
-const NewClass = ({ classDetails, addToCart, history, removeClass }) => {
+const NewClass = ({ classDetails, addToCart, history }) => {
   function GetFormattedDate(date) {
     let todayTime = new Date(date);
     let month = todayTime.getMonth() + 1;
@@ -9,6 +9,10 @@ const NewClass = ({ classDetails, addToCart, history, removeClass }) => {
     let year = todayTime.getFullYear();
     return month + "/" + day + "/" + year;
   }
+  const getId = () => {
+    addToCart(classDetails.id);
+    history.push("/app/purchase-class");
+  };
   return (
     <div className="class-card">
       <h2>{classDetails.instructor}</h2>
@@ -41,13 +45,10 @@ const NewClass = ({ classDetails, addToCart, history, removeClass }) => {
           <span className="subtitle">{classDetails.description}</span>
         </div>
         <div className="add-class-button">
-          <button onClick={() => addToCart(classDetails.id)}>
-            Add to Cart
-          </button>
-          <button onClick={() => history.push("/app/purchase-class")}>
+          <button onClick={getId}>Buy PunchPass</button>
+          {/* <button onClick={() => history.push("/app/purchase-class")}>
             Checkout
-          </button>
-          <button onClick={() => removeClass(classDetails.id)}>X</button>
+          </button> */}
         </div>
       </div>
     </div>

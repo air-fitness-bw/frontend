@@ -28,6 +28,17 @@ class AddClass extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.addNewClass(this.state.newClass);
+    this.setState({
+      newClass: {
+        price: "",
+        name: "",
+        start_date: "",
+        schedule: "",
+        location: "",
+        zipcode: "",
+        description: ""
+      }
+    });
   };
   render() {
     console.log(this.state.newClass);

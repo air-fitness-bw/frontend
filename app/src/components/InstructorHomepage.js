@@ -18,7 +18,12 @@ class InstructorHomepage extends React.Component {
           >
             Create a Class
           </button>
-          <button className="orange-button">Edit/Delete Class</button>
+          <button
+            onClick={() => this.props.history.push("/app/my-classes")}
+            className="orange-button"
+          >
+            Edit/Delete Class
+          </button>
           <button className="darkblue-button">Create a Punchpass</button>
         </div>
         <div className="button-container2">
