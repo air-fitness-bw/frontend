@@ -12,8 +12,10 @@ class MySchedule extends React.Component {
       mySchedule: []
     };
   }
+  //// after this component loads CDM fires off a get request for all
+  //// of the classes the current client user is signed up for then state
+  //// is set using the response
   componentDidMount() {
-    console.log("Mounted");
     AxiosWithAuth()
       .get("https://airfitness-backend.herokuapp.com/api/punch")
       .then(res => {
@@ -27,6 +29,9 @@ class MySchedule extends React.Component {
         console.log(err.response);
       });
   }
+  //// this function takes in a class id and executes a promise, after the
+  //// promise resolves another axios promise is chained to get a newly
+  //// updated list of classes specific to this user only
   removeClass = id => {
     this.removeClassPromise(id).then(
       AxiosWithAuth()
@@ -40,6 +45,8 @@ class MySchedule extends React.Component {
         .catch(err => console.log(err.response))
     );
   };
+  ///// this function returns a promise that will be used in a promise
+  //// chain above
   removeClassPromise = id => {
     return AxiosWithAuth()
       .delete(`https://airfitness-backend.herokuapp.com/api/punch/${id}`)
