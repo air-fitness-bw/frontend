@@ -77,7 +77,7 @@ class SignUp extends React.Component {
             <div className="button-wrapper">
               <button type="submit">JOIN NOW</button>
               <p>
-                Already a member? <Link to="/app/login">Log In</Link>
+                Already a member? <Link to="/login">Log In</Link>
               </p>
             </div>
           </form>
