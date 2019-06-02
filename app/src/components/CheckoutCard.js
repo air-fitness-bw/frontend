@@ -1,9 +1,7 @@
 import React from "react";
 import "./checkout-card.css";
 class CheckoutCard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+ 
   componentDidMount() {
     this.props.getId(this.props.product.name);
   }
